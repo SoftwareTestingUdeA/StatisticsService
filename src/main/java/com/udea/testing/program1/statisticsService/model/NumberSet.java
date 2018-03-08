@@ -1,7 +1,5 @@
 package com.udea.testing.program1.statisticsService.model;
 
-import java.util.LinkedList;
-
 public class NumberSet {
     String uuid;
     NumberLinkedList set;
