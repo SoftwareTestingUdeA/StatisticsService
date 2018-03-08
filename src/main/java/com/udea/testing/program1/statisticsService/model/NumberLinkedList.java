@@ -12,7 +12,7 @@ public class NumberLinkedList {
         size = 0;
     }
 
-    public NumberLinkedList(Node first, Node last) {
+    public NumberLinkedList(Node first, Node last,Integer size) {
         this.first = first;
         this.size = size;
         this.last = last;

@@ -25,7 +25,7 @@ public class NumberLinkedListTests {
 	@Test
     public void isEmptyWithNotEmptyListTest(){
         Node node = new Node( Double.parseDouble("1"), null);
-        NumberLinkedList numberLinkedList = new NumberLinkedList(node, null);
+        NumberLinkedList numberLinkedList = new NumberLinkedList(node, null,1);
         assertFalse("La lista no se encuentra vacia", numberLinkedList.isEmpty());
     }
 	
@@ -52,7 +52,7 @@ public class NumberLinkedListTests {
 		Node nodeToCompare = new Node(Double.parseDouble("2"), null);
 		
 		Node nodeInserted = new Node(Double.parseDouble("4"), null);
-		NumberLinkedList numberLinkedList = new NumberLinkedList(nodeInserted,nodeInserted);
+		NumberLinkedList numberLinkedList = new NumberLinkedList(nodeInserted,nodeInserted,1);
 		numberLinkedList.insert(Double.parseDouble("2"));
 		
 		assertEquals(nodeToCompare.getNumber(), numberLinkedList.getLast().getNumber());
