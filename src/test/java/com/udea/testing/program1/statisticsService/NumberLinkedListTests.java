@@ -56,6 +56,7 @@ public class NumberLinkedListTests {
 		numberLinkedList.insert(Double.parseDouble("2"));
 		
 		assertEquals(nodeToCompare.getNumber(), numberLinkedList.getLast().getNumber());
+		
 	}
 
 }
