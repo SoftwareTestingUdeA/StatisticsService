@@ -9,7 +9,7 @@ public class NumberLinkedList {
     public NumberLinkedList() {
         first = null;
         last = null;
-        size = null;
+        size = 0;
     }
 
     public NumberLinkedList(Node first, Node last) {
@@ -35,14 +35,14 @@ public class NumberLinkedList {
     }
 
     public Integer getSize() {
-        if(size == null) {
+        if (size == 0 || null == size) {
             calculateSize();
         }
         return size;
     }
 
     public Boolean isEmpty() {
-        if(first == null) {
+        if (first == null) {
             return true;
         }
         return false;
@@ -50,11 +50,11 @@ public class NumberLinkedList {
 
     public void insert(Double value) {
         Node node = new Node(value, null);
-        if(first == null) {
+        if (first == null) {
             first = node;
             last = first;
             return;
-        } 
+        }
         last.setLink(node);
         last = node;
     }
@@ -65,10 +65,9 @@ public class NumberLinkedList {
     }
 
     private void calculateSize() {
-        this.size = 0;
         Node node = first;
-        while(node != null) {
-            this.size++;
+        while (node != null) {
+            this.size = this.size + 1;
             node = node.getLink();
         }
     }

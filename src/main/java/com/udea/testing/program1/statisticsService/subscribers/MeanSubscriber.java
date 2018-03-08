@@ -21,13 +21,12 @@ public class MeanSubscriber implements MessageListener {
         NumberSet numberSet = null;
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
-
+            numberSet.generateList();
             numberSet.calculateMean();
-
+            numberSet.setList(null);
             publisher.publishMessageAsync("udea.testing.result", "mean", objectMapper.writeValueAsString(numberSet));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(new String("lamean  " + message.getMessageProperties()));
     }
 }
