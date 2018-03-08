@@ -14,8 +14,14 @@ public class NumberLinkedList {
 
     public NumberLinkedList(Node first, Node last) {
         this.first = first;
-        this.last = last;
         this.size = size;
+        this.last = last;
+        if(last == null) {
+        	this.last = first;
+        }
+        if(first == null) {
+        	this.first = last;
+        }
     }
 
     public Node getFirst() {
