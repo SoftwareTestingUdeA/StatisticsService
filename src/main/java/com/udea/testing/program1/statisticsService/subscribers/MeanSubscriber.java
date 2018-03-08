@@ -1,6 +1,7 @@
 package com.udea.testing.program1.statisticsService.subscribers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.udea.testing.program1.statisticsService.model.Node;
 import com.udea.testing.program1.statisticsService.model.NumberSet;
 import com.udea.testing.program1.statisticsService.rabbitconf.Publisher;
 import org.springframework.amqp.core.Message;
@@ -21,9 +22,14 @@ public class MeanSubscriber implements MessageListener {
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
             Double mean = 0.0;
-            for (Double d : numberSet.getSet())
-                mean = mean + d;
-            mean = mean / numberSet.getSet().size();
+            Node node = numberSet.getSet().getFirst();
+            while(node != null) {
+                mean += node.getNumber();
+                node.getLink();
+            }
+            //for (Double d : numberSet.getSet())
+                //mean = mean + d;
+            mean = mean / numberSet.getSet().getSize();
             numberSet.setMean(mean);
             publisher.publishMessageAsync("udea.testing.result", "mean", objectMapper.writeValueAsString(numberSet));
         } catch (IOException e) {

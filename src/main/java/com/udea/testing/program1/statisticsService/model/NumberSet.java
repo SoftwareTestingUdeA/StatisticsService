@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class NumberSet {
     String uuid;
-    LinkedList<Double> set;
+    NumberLinkedList set;
     Double mean;
     Double stdDeviation;
 
@@ -24,11 +24,11 @@ public class NumberSet {
         this.mean = mean;
     }
 
-    public LinkedList<Double> getSet() {
+    public NumberLinkedList getSet() {
         return set;
     }
 
-    public void setSet(LinkedList<Double> set) {
+    public void setSet(NumberLinkedList set) {
         this.set = set;
     }
 
