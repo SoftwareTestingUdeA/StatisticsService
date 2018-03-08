@@ -1,6 +1,7 @@
 package com.udea.testing.program1.statisticsService.subscribers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.udea.testing.program1.statisticsService.model.Node;
 import com.udea.testing.program1.statisticsService.model.NumberSet;
 import com.udea.testing.program1.statisticsService.rabbitconf.Publisher;
 import org.springframework.amqp.core.Message;
@@ -20,16 +21,25 @@ public class StdDeviationSubscriber implements MessageListener {
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
             Double mean = 0.0;
-            for (Double d : numberSet.getSet())
-                mean = mean + d;
-            mean = mean / numberSet.getSet().size();
+            Node node = numberSet.getSet().getFirst();
+            while(node != null) {
+                mean += node.getNumber();
+                node.getLink();
+            }
+            //for (Double d : numberSet.getSet())
+                //mean = mean + d;
+            mean = mean / numberSet.getSet().getSize();
             numberSet.setMean(mean);
 
             Double stdDeviation = 0.0;
-            for (Double d : numberSet.getSet()) {
-                stdDeviation = stdDeviation + Math.pow(d - mean, 2);
+            node = numberSet.getSet().getFirst();
+            while(node != null) {
+                mean += node.getNumber();
+                stdDeviation += Math.pow(node.getNumber() - mean, 2);
+                node.getLink();
             }
-            stdDeviation = Math.sqrt(stdDeviation / numberSet.getSet().size() - 1);
+
+            stdDeviation = Math.sqrt(stdDeviation / numberSet.getSet().getSize() - 1);
 
             numberSet.setStdDeviation(stdDeviation);
 
