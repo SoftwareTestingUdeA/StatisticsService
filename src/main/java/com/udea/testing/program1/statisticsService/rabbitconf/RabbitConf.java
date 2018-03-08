@@ -11,6 +11,12 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.1
+ */
 @Configuration
 public class RabbitConf {
 

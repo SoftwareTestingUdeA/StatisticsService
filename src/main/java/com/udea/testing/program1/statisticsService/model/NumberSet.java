@@ -2,6 +2,12 @@ package com.udea.testing.program1.statisticsService.model;
 
 import java.util.List;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.1
+ */
 public class NumberSet {
     String uuid;
     List<Double> set;
@@ -54,6 +60,9 @@ public class NumberSet {
         this.stdDeviation = stdDeviation;
     }
 
+    /**
+     * Method used to calculate the mean of a set of n numbers
+     */
     public void calculateMean() {
         Node node = this.getList().getFirst();
         this.setMean(0.0);
@@ -65,6 +74,9 @@ public class NumberSet {
         this.mean = this.mean / this.getList().getSize();
     }
 
+    /**
+     * Method used to calculate the standard deviation of a set of n numbers
+     */
     public void calculateStdDeviation() {
         Node node = this.getList().getFirst();
         this.setStdDeviation(0.0);
@@ -72,9 +84,12 @@ public class NumberSet {
             this.stdDeviation = this.stdDeviation + Math.pow(node.getNumber() - this.getMean(), 2.0);
             node = node.getLink();
         }
-        this.stdDeviation = Math.sqrt(stdDeviation / (this.getList().getSize() - 1)); 
+        this.stdDeviation = Math.sqrt(stdDeviation / (this.getList().getSize() - 1));
     }
 
+    /**
+     * Method that generate a linked list from an array of n numbers
+     */
     public void generateList() {
         this.setList(new NumberLinkedList());
         if (null != set)

@@ -1,5 +1,11 @@
 package com.udea.testing.program1.statisticsService.model;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.3
+ */
 public class NumberLinkedList {
 
     private Node first;
@@ -12,15 +18,15 @@ public class NumberLinkedList {
         size = 0;
     }
 
-    public NumberLinkedList(Node first, Node last,Integer size) {
+    public NumberLinkedList(Node first, Node last, Integer size) {
         this.first = first;
         this.size = size;
         this.last = last;
-        if(last == null) {
-        	this.last = first;
+        if (last == null) {
+            this.last = first;
         }
-        if(first == null) {
-        	this.first = last;
+        if (first == null) {
+            this.first = last;
         }
     }
 

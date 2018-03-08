@@ -1,5 +1,11 @@
 package com.udea.testing.program1.statisticsService.model;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.1
+ */
 public class Node {
     private Double number;
     private Node link;

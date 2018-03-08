@@ -7,6 +7,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * @author William Hincapie - daemonsoft@gmail.com
+ * @author Juan Pablo Ospina - jpoh97@gmail.com
+ * @author Daniel Martinez - danielmartinezg95@gmail.com
+ * @version 0.1
+ */
 @Component
 public class Publisher {
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RabbitConf.class);
