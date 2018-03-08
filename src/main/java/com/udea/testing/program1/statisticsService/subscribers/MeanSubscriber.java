@@ -21,16 +21,9 @@ public class MeanSubscriber implements MessageListener {
         NumberSet numberSet = null;
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
-            Double mean = 0.0;
-            Node node = numberSet.getSet().getFirst();
-            while(node != null) {
-                mean += node.getNumber();
-                node.getLink();
-            }
-            //for (Double d : numberSet.getSet())
-                //mean = mean + d;
-            mean = mean / numberSet.getSet().getSize();
-            numberSet.setMean(mean);
+
+            numberSet.calculateMean();
+
             publisher.publishMessageAsync("udea.testing.result", "mean", objectMapper.writeValueAsString(numberSet));
         } catch (IOException e) {
             e.printStackTrace();

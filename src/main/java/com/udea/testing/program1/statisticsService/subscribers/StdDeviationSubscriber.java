@@ -20,28 +20,10 @@ public class StdDeviationSubscriber implements MessageListener {
         NumberSet numberSet = null;
         try {
             numberSet = objectMapper.readValue(message.getBody(), NumberSet.class);
-            Double mean = 0.0;
-            Node node = numberSet.getSet().getFirst();
-            while(node != null) {
-                mean += node.getNumber();
-                node.getLink();
-            }
-            //for (Double d : numberSet.getSet())
-                //mean = mean + d;
-            mean = mean / numberSet.getSet().getSize();
-            numberSet.setMean(mean);
 
-            Double stdDeviation = 0.0;
-            node = numberSet.getSet().getFirst();
-            while(node != null) {
-                mean += node.getNumber();
-                stdDeviation += Math.pow(node.getNumber() - mean, 2);
-                node.getLink();
-            }
+            numberSet.calculateMean();
 
-            stdDeviation = Math.sqrt(stdDeviation / numberSet.getSet().getSize() - 1);
-
-            numberSet.setStdDeviation(stdDeviation);
+            numberSet.calculateStdDeviation();
 
             publisher.publishMessageAsync("udea.testing.result", "stddeviation", objectMapper.writeValueAsString(numberSet));
         } catch (IOException e) {
