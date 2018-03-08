@@ -72,7 +72,7 @@ public class NumberSet {
             this.stdDeviation = this.stdDeviation + Math.pow(node.getNumber() - this.getMean(), 2.0);
             node = node.getLink();
         }
-        this.stdDeviation = Math.sqrt(stdDeviation / (this.getList().getSize() - 1));
+        this.stdDeviation = Math.sqrt(stdDeviation / (this.getList().getSize() - 1)); 
     }
 
     public void generateList() {
