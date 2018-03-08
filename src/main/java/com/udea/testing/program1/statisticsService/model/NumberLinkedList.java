@@ -65,6 +65,7 @@ public class NumberLinkedList {
     }
 
     private void calculateSize() {
+        this.size = 0;
         Node node = first;
         while(node != null) {
             this.size++;

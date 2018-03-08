@@ -37,4 +37,24 @@ public class NumberSet {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
+
+    public void calculateMean() {
+        Node node = this.getSet().getFirst();
+        while(node != null) {
+            this.mean += node.getNumber();
+            node.getLink();
+        }
+        this.mean /= this.getSet().getSize();
+    }
+
+    public void calculateStdDeviation() {
+        Node node = this.getSet().getFirst();
+        Double stdDeviation = 0.0;
+        while(node != null) {
+            this.mean += node.getNumber();
+            this.stdDeviation += Math.pow(node.getNumber() - mean, 2);
+            node.getLink();
+        }
+        this.stdDeviation = Math.sqrt(stdDeviation / this.getSet().getSize() - 1);
+    }
 }
